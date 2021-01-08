@@ -1,6 +1,7 @@
 package com.linkedin.servlet;
 
 import java.io.IOException;
+
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
@@ -12,7 +13,7 @@ import javax.servlet.annotation.WebFilter;
 /**
  * Servlet Filter implementation class ParameterLoggingFilter
  */
-@WebFilter("/*")
+@WebFilter(urlPatterns="/*", asyncSupported = true)
 public class ParameterLoggingFilter implements Filter {
 
     /**
