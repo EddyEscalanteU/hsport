@@ -7,6 +7,8 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
+import com.linkedin.CatalogItem;
+
 @Named
 @RequestScoped
 public class CatalogItemDeleteBean {

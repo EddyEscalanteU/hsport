@@ -6,8 +6,8 @@
 
 <ui:composition template="/WEB-INF/template.xhtml">
     <ui:define name="pageHeader">
-        <h:link value="#{msgs['form.pageTitle']}" outcome="form"/> |
-        <h:link value="#{msgs['list.pageTitle']}" outcome="list"/>
+        <h:link value="#{msg['form.pageTitle']}" outcome="form"/> |
+        <h:link value="#{msg['list.pageTitle']}" outcome="list"/>
     </ui:define>
     <ui:define name="body">
         <h:outputScript library="js" name="shake.js"></h:outputScript>
@@ -31,7 +31,6 @@
                 <h:outputLabel value="Description"/>
                 <h:inputTextarea value="#{catalogItemFormBean.item.description}"></h:inputTextarea>
             </div>
-
             <h:commandButton value="Submit" action="#{catalogItemFormBean.addItem()}"/>
         </h:form>
     </ui:define>

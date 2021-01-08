@@ -4,44 +4,55 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
+
+import com.linkedin.CatalogItem;
+import com.linkedin.CatalogLocal;
 
 @SessionScoped
 @Named
 public class CatalogItemFormBean implements Serializable {
 
-	private CatalogItem item = new CatalogItem();
+    @EJB
+    private CatalogLocal catalogBean;
 
-	private List<CatalogItem> items = new ArrayList<>();
+    private CatalogItem item = new CatalogItem();
 
-	public String addItem() {
-		long itemId = this.items.size() + 1;
+    private List<CatalogItem> items = new ArrayList<>();
 
-		this.items.add(new CatalogItem(itemId, this.item.getName(), this.item.getManufacturer(),
-				this.item.getDescription(), this.item.getAvailableDate()));
-		
-		this.items.stream().forEach(item ->{
-			System.out.println(item.toString());
-		});
-		
-		return "list?faces-redirect=true";
-	}
+    public String addItem() {
+        long itemId = this.catalogBean.getItems().size() + 1;
 
-	public CatalogItem getItem() {
-		return item;
-	}
+        this.catalogBean.addItem(new CatalogItem(itemId, this.item.getName(), this.item.getManufacturer(),
+                this.item.getDescription(), this.item.getAvailableDate()));
 
-	public void setItem(CatalogItem item) {
-		this.item = item;
-	}
+        this.catalogBean.getItems().stream().forEach(item -> {
+            System.out.println(item.toString());
+        });
 
-	public List<CatalogItem> getItems() {
-		return items;
-	}
+        return "list?faces-redirect=true";
+    }
 
-	public void setItems(List<CatalogItem> items) {
-		this.items = items;
-	}
+    public void init() {
+        this.items = this.catalogBean.getItems();
+    }
+
+    public CatalogItem getItem() {
+        return item;
+    }
+
+    public void setItem(CatalogItem item) {
+        this.item = item;
+    }
+
+    public List<CatalogItem> getItems() {
+        return items;
+    }
+
+    public void setItems(List<CatalogItem> items) {
+        this.items = items;
+    }
 
 }

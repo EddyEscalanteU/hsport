@@ -13,7 +13,7 @@
         <resource-bundle>
             <!--No se necesita agregar la extension del archivo-->
             <base-name>messages</base-name>
-            <var>msgs</var>
+            <var>msg</var>
         </resource-bundle>
         <!--cambio de textos de validadores-->
         <message-bundle>jsf</message-bundle>

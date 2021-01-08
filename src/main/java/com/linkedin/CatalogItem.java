@@ -1,5 +1,4 @@
-package com.linkedin.jsf;
-
+package com.linkedin;
 
 public class CatalogItem {
 
