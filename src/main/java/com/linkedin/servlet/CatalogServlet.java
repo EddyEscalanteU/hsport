@@ -1,9 +1,8 @@
 package com.linkedin.servlet;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
-import javax.servlet.AsyncContext;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.Cookie;
@@ -14,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class CatalogServlet
  */
-@WebServlet(urlPatterns= "/CatalogServlet", asyncSupported = true)
+@WebServlet(urlPatterns = "/CatalogServlet")
 public class CatalogServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -41,78 +40,28 @@ public class CatalogServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-	
-		AsyncContext asyncContext = request.startAsync();
 		
-		asyncContext.start(new Runnable() {
-
-			@Override
-			public void run() {
-				
-				try {
-					Thread.sleep(5000);
-					System.out.println("Print the response");
-					System.out.println("Reponse returned by: " + Thread.currentThread().getName());
-					returnResponse(request, response);
-					asyncContext.complete();
-
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-			}
-			
-		});
-		
-		System.out.println("Initial Request: " + Thread.currentThread().getName());
-		
-	}
-
-	private void returnResponse(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		String name = request.getParameter("name");
 		String manufacturer = request.getParameter("manufacturer");
 		String sku = request.getParameter("sku");
-		
+
 		response.setHeader("someHeader", "someHeaderValue");
 		response.addCookie(new Cookie("someCookie", "someCookieValue"));
+
+		Catalog.addItem(new CatalogItem(name, manufacturer, sku));
 		
-		Catalog.addItem(new CatalogItem(name, manufacturer,sku));
+		request.setAttribute("items", Catalog.getItems());
+		//request.setAttribute("unEntero", new Integer(22));
+		RequestDispatcher dispatcher = request.getRequestDispatcher("list.jsp");
+		dispatcher.forward(request, response);
 		
-		PrintWriter out = response.getWriter();
-	
-		out.println("<html>");
-		out.println("<head></head>");
-		out.println("<body>");
-		out.println("<table>");
-		for(CatalogItem item:Catalog.getItems()) {
-			out.println("<tr>");
-			out.println("<td>");
-			out.print(item.getName());
-			out.println("</td>");
-			out.println("</tr>");
-		}
-		out.println("</table>");
-		out.println("</body>");
-		out.println("</html>");
+		
+		
+		
+		
+		
+		
+		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
 }
