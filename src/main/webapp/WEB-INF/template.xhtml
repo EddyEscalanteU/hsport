@@ -1,13 +1,11 @@
-<?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-	  xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
-<!--      xmlns:h="http://xmlns.jcp.org/jsf/html">-->
-
-<!--<f:loadBundle basename="resources.messages" var="msg" />-->
-		<head>
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      
+<!--   		<f:loadBundle basename="com.linkedin.jsf.resources.messages" var="msg" />-->
+		<h:head>
 		<title><ui:insert name="pageTitle">Page Title</ui:insert></title>
 		<style type="text/css">
 			body {
@@ -26,7 +24,8 @@
 				  color: #8E969D;
 			}
 		</style>
-		</head>
+			<h:outputStylesheet library="css" name="global.css"></h:outputStylesheet>
+		</h:head>
 
 <body bgcolor="#ffffff">
 <table style="border:1px solid #CAD6E0"  align="center" cellpadding="0" cellspacing="0" border="0" width="400">
@@ -46,8 +45,11 @@
 			<table width="100%" style="height:150px" align="left" cellpadding="0" cellspacing="0" border="0">
 			<tbody>
 				<tr>
+					<td><h:graphicImage library="img" value="/resources/img/banner.jpeg"/></td>
+				</tr>
+				<tr>
 					<td align="center" width="100%" valign="middle">
-					
+				
 					<ui:insert name="body">Page Body</ui:insert>
 					
 					</td>
