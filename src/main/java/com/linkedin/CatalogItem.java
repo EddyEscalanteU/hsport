@@ -1,5 +1,6 @@
 package com.linkedin;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,6 +15,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "CATALOG_ITEM")
@@ -24,6 +27,7 @@ public class CatalogItem {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long itemId;
 
+	@Size(min = 0, max=3)
 	@ManyToMany(cascade = CascadeType.ALL, fetch=FetchType.EAGER)
 	@JoinTable(joinColumns = @JoinColumn(name="CATALOG_ITEM_ID")
 		, inverseJoinColumns = @JoinColumn(name="ITEM_MANAGER_ID"))
@@ -32,9 +36,11 @@ public class CatalogItem {
 	@Column(name = "NAME")
 	private String name;
 
+	@Pattern(regexp = "^[A-Za-z]*$", message = "Must be letters")
 	@Column(name = "MANUFACTURER")
 	private String manufacturer;
 
+	@Pattern(regexp = "^[A-Za-z]{5,10}$", message = "Must be letters")
 	@Column(name = "DESCRIPTION")
 	private String description;
 

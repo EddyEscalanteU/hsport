@@ -15,8 +15,8 @@
             <base-name>messages</base-name>
             <var>msg</var>
         </resource-bundle>
-        <!--cambio de textos de validadores-->
-        <message-bundle>jsf</message-bundle>
+<!--        &lt;!&ndash;cambio de textos de validadores&ndash;&gt;-->
+<!--        <message-bundle>jsf</message-bundle>-->
     </application>
 
 </faces-config>
