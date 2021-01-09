@@ -1,74 +1,75 @@
 package com.linkedin;
 
+
 public class CatalogItem {
 
-	private Long itemId;
-	
-	private String name;
+    private Long itemId;
 
-	private String manufacturer;
+    private String name;
 
-	private String description;
+    private String manufacturer;
 
-	private String availableDate;
+    private String description;
 
-	public CatalogItem() {
-		
-	}
-	
-	public CatalogItem(Long itemId, String name, String manufacturer, String description, String availableDate) {
-		super();
-		this.itemId = itemId;
-		this.name = name;
-		this.manufacturer = manufacturer;
-		this.description = description;
-		this.availableDate = availableDate;
-	}
+    private String availableDate;
 
-	public Long getItemId() {
-		return itemId;
-	}
+    public CatalogItem() {
 
-	public void setItemId(Long itemId) {
-		this.itemId = itemId;
-	}
+    }
 
-	public String getName() {
-		return name;
-	}
+    public CatalogItem(Long itemId, String name, String manufacturer, String description, String availableDate) {
+        super();
+        this.itemId = itemId;
+        this.name = name;
+        this.manufacturer = manufacturer;
+        this.description = description;
+        this.availableDate = availableDate;
+    }
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public Long getItemId() {
+        return itemId;
+    }
 
-	public String getManufacturer() {
-		return manufacturer;
-	}
+    public void setItemId(Long itemId) {
+        this.itemId = itemId;
+    }
 
-	public void setManufacturer(String manufacturer) {
-		this.manufacturer = manufacturer;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public String getDescription() {
-		return description;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setDescription(String description) {
-		this.description = description;
-	}
+    public String getManufacturer() {
+        return manufacturer;
+    }
 
-	public String getAvailableDate() {
-		return availableDate;
-	}
+    public void setManufacturer(String manufacturer) {
+        this.manufacturer = manufacturer;
+    }
 
-	public void setAvailableDate(String availableDate) {
-		this.availableDate = availableDate;
-	}
+    public String getDescription() {
+        return description;
+    }
 
-	@Override
-	public String toString() {
-		return "CatalogItem [itemId=" + itemId + ", name=" + name + ", manufacturer=" + manufacturer + ", description="
-				+ description + ", availableDate=" + availableDate + "]";
-	}
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getAvailableDate() {
+        return availableDate;
+    }
+
+    public void setAvailableDate(String availableDate) {
+        this.availableDate = availableDate;
+    }
+
+    @Override
+    public String toString() {
+        return "CatalogItem [itemId=" + itemId + ", name=" + name + ", manufacturer=" + manufacturer + ", description="
+                + description + ", availableDate=" + availableDate + "]";
+    }
 
 }
