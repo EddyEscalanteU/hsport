@@ -16,7 +16,16 @@
     </ui:define>
 
     <ui:define name="body">
-        <h:dataTable value="#{catalogItemFormBean.items}" var="item">
+
+        <h:form>
+            <h:outputLabel value="Search by Name:"/>
+            <h:inputText id="searchInput" value="#{catalogItemFormBean.searchText}"/>
+            <h:commandButton action="#{catalogItemFormBean.searchByName}" value="Search">
+                <f:ajax execute="searchInput" render="dataTable"/>
+            </h:commandButton>
+        </h:form>
+
+        <h:dataTable id="dataTable" value="#{catalogItemFormBean.items}" var="item">
             <h:column>
                 <f:facet name="header">Name</f:facet>
                 <h:outputText value="#{item.name}"/>
