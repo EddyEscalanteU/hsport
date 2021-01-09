@@ -17,17 +17,23 @@ public class Catalog implements CatalogLocal {
 
 	@PersistenceContext
 	private EntityManager entityManager;
-	
+
 	private List<CatalogItem> items = new ArrayList<>();
-    /**
-     * Default constructor. 
-     */
-    public Catalog() {
-    }
+
+	/**
+	 * Default constructor.
+	 */
+	public Catalog() {
+	}
+
+	@Override
+	public void saveItem(CatalogItem item) {
+		this.entityManager.merge(item);
+	}
 
 	@Override
 	public List<CatalogItem> getItems() {
-		return this.entityManager.createQuery("select c from CatalogItem c", CatalogItem.class).getResultList(); 
+		return this.entityManager.createQuery("select c from CatalogItem c", CatalogItem.class).getResultList();
 	}
 
 	@Override
@@ -37,18 +43,19 @@ public class Catalog implements CatalogLocal {
 
 	@Override
 	public CatalogItem findItem(Long itemId) {
-		return this.entityManager.find(CatalogItem.class, itemId); 
+		return this.entityManager.find(CatalogItem.class, itemId);
 	}
 
 	@Override
 	public void deleteItem(CatalogItem item) {
-		this.entityManager.remove(this.entityManager.contains(item) ? item:this.entityManager.merge(item));
+		this.entityManager.remove(this.entityManager.contains(item) ? item : this.entityManager.merge(item));
 	}
 
 	@Override
 	public List<CatalogItem> searchByName(String name) {
-		return this.entityManager.createQuery("select c from CatalogItem c " +
-				" where c.name like :name", CatalogItem.class).setParameter("name", "%" + name + "%").getResultList();
+		return this.entityManager
+				.createQuery("select c from CatalogItem c " + " where c.name like :name", CatalogItem.class)
+				.setParameter("name", "%" + name + "%").getResultList();
 	}
 
 }
