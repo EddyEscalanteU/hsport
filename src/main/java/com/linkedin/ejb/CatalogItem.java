@@ -1,6 +1,5 @@
-package com.linkedin;
+package com.linkedin.ejb;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 

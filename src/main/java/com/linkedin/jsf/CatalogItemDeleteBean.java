@@ -1,16 +1,14 @@
 package com.linkedin.jsf;
 
 import java.io.Serializable;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.linkedin.CatalogItem;
-import com.linkedin.CatalogLocal;
+import com.linkedin.ejb.CatalogItem;
+import com.linkedin.ejb.CatalogLocal;
 
 @Named
 @ConversationScoped

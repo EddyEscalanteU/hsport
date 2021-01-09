@@ -8,8 +8,8 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.linkedin.CatalogItem;
-import com.linkedin.CatalogLocal;
+import com.linkedin.ejb.CatalogItem;
+import com.linkedin.ejb.CatalogLocal;
 
 @RequestScoped
 @Named
