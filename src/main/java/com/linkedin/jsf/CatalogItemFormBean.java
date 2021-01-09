@@ -4,14 +4,14 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
 import com.linkedin.CatalogItem;
 import com.linkedin.CatalogLocal;
 
-@SessionScoped
+@RequestScoped
 @Named
 public class CatalogItemFormBean implements Serializable {
 

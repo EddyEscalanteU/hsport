@@ -10,82 +10,82 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "CATALOG_ITEM")
+@Table(name="CATALOG_ITEM")
 public class CatalogItem {
 
-    @Id
-    @Column(name = "CATALOG_ITEM_ID")
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long itemId;
+	@Id
+	@Column(name="CATALOG_ITEM_ID")
+	@GeneratedValue(strategy=GenerationType.AUTO)
+	private Long itemId;
+	
+	@Column(name="NAME")
+	private String name;
 
-    @Column(name = "NAME")
-    private String name;
+	@Column(name="MANUFACTURER")
+	private String manufacturer;
 
-    @Column(name = "MANUFACTURER")
-    private String manufacturer;
+	@Column(name="DESCRIPTION")
+	private String description;
 
-    @Column(name = "DESCRIPTION")
-    private String description;
+	@Column(name="AVAILABLE_DATE")
+	private String availableDate;
 
-    @Column(name = "AVAILABLE_DATE")
-    private String availableDate;
+	public CatalogItem() {
+		
+	}
+	
+	public CatalogItem(String name, String manufacturer, String description, String availableDate) {
+		super();
+		this.name = name;
+		this.manufacturer = manufacturer;
+		this.description = description;
+		this.availableDate = availableDate;
+	}
 
-    public CatalogItem() {
+	public Long getItemId() {
+		return itemId;
+	}
 
-    }
+	public void setItemId(Long itemId) {
+		this.itemId = itemId;
+	}
 
-    public CatalogItem(String name, String manufacturer, String description, String availableDate) {
-        super();
-        this.name = name;
-        this.manufacturer = manufacturer;
-        this.description = description;
-        this.availableDate = availableDate;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public Long getItemId() {
-        return itemId;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    public void setItemId(Long itemId) {
-        this.itemId = itemId;
-    }
+	public String getManufacturer() {
+		return manufacturer;
+	}
 
-    public String getName() {
-        return name;
-    }
+	public void setManufacturer(String manufacturer) {
+		this.manufacturer = manufacturer;
+	}
 
-    public void setName(String name) {
-        this.name = name;
-    }
+	public String getDescription() {
+		return description;
+	}
 
-    public String getManufacturer() {
-        return manufacturer;
-    }
+	public void setDescription(String description) {
+		this.description = description;
+	}
 
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
-    }
+	public String getAvailableDate() {
+		return availableDate;
+	}
 
-    public String getDescription() {
-        return description;
-    }
+	public void setAvailableDate(String availableDate) {
+		this.availableDate = availableDate;
+	}
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getAvailableDate() {
-        return availableDate;
-    }
-
-    public void setAvailableDate(String availableDate) {
-        this.availableDate = availableDate;
-    }
-
-    @Override
-    public String toString() {
-        return "CatalogItem [itemId=" + itemId + ", name=" + name + ", manufacturer=" + manufacturer + ", description="
-                + description + ", availableDate=" + availableDate + "]";
-    }
+	@Override
+	public String toString() {
+		return "CatalogItem [itemId=" + itemId + ", name=" + name + ", manufacturer=" + manufacturer + ", description="
+				+ description + ", availableDate=" + availableDate + "]";
+	}
 
 }
