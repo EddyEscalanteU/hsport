@@ -1,33 +1,38 @@
 package com.linkedin.jsf;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Map.Entry;
+import java.util.Random;
 
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Alternative;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
+import javax.ws.rs.core.Response;
 
 @ApplicationScoped
 @RemoteService
-@Alternative
 public class RemoteInventoryService implements InventoryService {
 
-	private Map<Long, InventoryItem> items = new HashMap<Long, InventoryItem>();
+	private String apiUrl = "http://localhost:7080/hsport/hsports/api/";
 
 	@Override
 	public void createItem(Long catalogItemId, String name) {
-		long inventoryItemId = items.size() + 1;
-		this.items.put(inventoryItemId, new InventoryItem(inventoryItemId, catalogItemId, name, 0L));
-		this.printInventory();
+		
+		Client client = ClientBuilder.newClient();
+		Response response = client.target(apiUrl)
+			.path("inventoryitems")
+			.request()
+			.post(Entity.json(new InventoryItem(null, catalogItemId, name, (long) new Random().nextInt(10))));
+		
+		System.out.println(response.getStatus());
+		System.out.println(response.getLocation().getPath());
 	}
 
-	public void printInventory() {
-		System.out.println("Remote inventory contains:");
-		for (Entry<Long, InventoryItem> entry : this.items.entrySet()) {
-			System.out.println(entry.getValue().getName());
-		}
-	}
 
+	
+	
+	
+	
+	
 	@Override
 	public Long getQuantity(Long catalogItemId) {
 		// TODO Auto-generated method stub

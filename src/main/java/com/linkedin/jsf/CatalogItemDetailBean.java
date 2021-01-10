@@ -9,9 +9,9 @@ import javax.enterprise.context.ConversationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
-import com.linkedin.ejb.CatalogItem;
-import com.linkedin.ejb.CatalogLocal;
-import com.linkedin.ejb.ItemManager;
+import com.linkedin.CatalogItem;
+import com.linkedin.CatalogLocal;
+import com.linkedin.ItemManager;
 
 @Named
 @ConversationScoped

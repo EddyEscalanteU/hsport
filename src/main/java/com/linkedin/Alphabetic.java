@@ -1,4 +1,4 @@
-package com.linkedin.ejb;
+package com.linkedin;
 
 import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
 import static java.lang.annotation.ElementType.CONSTRUCTOR;

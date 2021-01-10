@@ -1,4 +1,4 @@
-package com.linkedin.ejb;
+package com.linkedin;
 
 import java.util.List;
 
