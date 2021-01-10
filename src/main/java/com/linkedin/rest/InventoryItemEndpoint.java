@@ -1,7 +1,5 @@
 package com.linkedin.rest;
 
-import com.linkedin.jax.InventoryItem;
-
 import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -24,6 +22,7 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 import javax.ws.rs.core.UriBuilder;
 
+import com.linkedin.jax.InventoryItem;
 
 @RequestScoped
 @Path("/inventoryitems")

@@ -26,17 +26,25 @@ public class RemoteInventoryService implements InventoryService {
 		System.out.println(response.getStatus());
 		System.out.println(response.getLocation().getPath());
 	}
-
-
-	
-	
-	
-	
 	
 	@Override
 	public Long getQuantity(Long catalogItemId) {
-		// TODO Auto-generated method stub
-		return null;
+		Client client = ClientBuilder.newClient();
+		InventoryItem inventoryItem = client.target(apiUrl).path("inventoryitems").path("catalog")
+			.queryParam("catalogItemId", catalogItemId.toString())
+			.request().get(InventoryItem.class);
+		return inventoryItem.getQuantity();
 	}
 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
